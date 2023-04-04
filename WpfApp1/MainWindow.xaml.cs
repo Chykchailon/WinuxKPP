@@ -69,11 +69,11 @@ namespace WpfApp1
                 tbMail.Background = Brushes.LightGreen;
 
                 MessageBox.Show("Данные приняты С==3");
+                User user = new User(login,email,pass);
+
+                db.Users.Add(user);
+                db.SaveChanges();
             }
         }
-
-        //User user = new User(login, email, pass);
-        //db.Users.Add(user);
-        //db.SaveChanges();
     }
 }

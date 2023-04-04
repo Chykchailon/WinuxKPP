@@ -8,8 +8,24 @@ namespace WpfApp1
 {
     class User
     {
-        private int id { get; set; }
+        public int id { get; set; }
         private string login, email, pass;
+
+        public string Login
+        {
+            get { return login; }
+            set { login = value; }  
+        }
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+        public string Pass
+        {
+            get { return pass; }
+            set { pass = value; }
+        }
 
         public User() { }
 
