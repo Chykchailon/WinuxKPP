@@ -68,12 +68,19 @@ namespace WpfApp1
                 tbMail.ToolTip = "";
                 tbMail.Background = Brushes.LightGreen;
 
-                MessageBox.Show("Данные приняты С==3");
                 User user = new User(login,email,pass);
 
                 db.Users.Add(user);
                 db.SaveChanges();
+
             }
+        }
+
+        private void In_Change(object sender, RoutedEventArgs e)
+        {
+            AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
+            Close();
         }
     }
 }
