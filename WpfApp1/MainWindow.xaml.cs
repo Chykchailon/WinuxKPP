@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Animation;
+using System.Windows.Interop;
 
 namespace WpfApp1
 {
@@ -81,6 +82,37 @@ namespace WpfApp1
         {
             AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
+            Close();
+        }
+        private void TopBor_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                if (Mouse.LeftButton == MouseButtonState.Pressed)
+                {
+                    var windowMode = this.ResizeMode;
+                    if (this.ResizeMode != ResizeMode.NoResize)
+                    {
+                        this.ResizeMode = ResizeMode.NoResize;
+                    }
+
+                    this.UpdateLayout();
+
+                    DragMove();
+
+
+                    if (this.ResizeMode != windowMode)
+                    {
+                        this.ResizeMode = windowMode;
+                    }
+
+                    this.UpdateLayout();
+                }
+            }
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
             Close();
         }
     }

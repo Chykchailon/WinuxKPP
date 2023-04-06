@@ -7,7 +7,13 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Форма" Height="600" Width="1000">
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None"
+        Title="Форма" Height="400" Width="300">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="20"/>
+    </WindowChrome.WindowChrome>
+    
     <Window.Triggers>
         <EventTrigger RoutedEvent="Loaded">
             <EventTrigger.Actions>
@@ -24,16 +30,18 @@
             </EventTrigger.Actions>
         </EventTrigger>
     </Window.Triggers>
-    <Grid Background="#ffdadada">
-        <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="450" CornerRadius="15">
+    <Grid>
+        <Viewbox>
+        <Border Margin="0" Background="White" VerticalAlignment="Stretch" Padding="30" CornerRadius="30" Name="TopBor" MouseLeftButtonDown="TopBor_OnMouseLeftButtonDown">
             <Border.Effect>
-                <DropShadowEffect BlurRadius="50" Color="Black" ShadowDepth="5"/>
+                <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0" Opacity="0.25" Direction="0"/>
             </Border.Effect>
             <StackPanel>
-                <TextBlock Text="Авторизация" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
+                    <Button HorizontalAlignment="Right" Content="X" Click="Close_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    <TextBlock Text="Авторизация" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
                 <Grid Margin="0 0 0 20">
-                    <Button Click="Reg_Chenge" HorizontalAlignment="Left" Content="Регистрация"/>
-                    <Button HorizontalAlignment="Right" Content="Войти" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    <Button Click="Reg_Chenge" HorizontalAlignment="Left" Content="Регистрация"  Style="{StaticResource MaterialDesignFlatButton}"/>
+                    <Button HorizontalAlignment="Right" Content="Войти"/>
                 </Grid>
                 <TextBox x:Name="tbLogin" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                 <PasswordBox x:Name="passBox" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"/>
@@ -41,5 +49,6 @@
                 <Button Content="Войти" x:Name="INbut" Margin="0 20" Click="Button_Auth_Click"/>
             </StackPanel>
         </Border>
+        </Viewbox>
     </Grid>
 </Window>

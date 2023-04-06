@@ -7,8 +7,13 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Форма" Height="600" Width="1000">
-       
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None"
+        Title="Форма" Height="400" Width="600">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="20"/>
+    </WindowChrome.WindowChrome>
+    
     <Window.Triggers>
         <EventTrigger RoutedEvent="Loaded">
             <EventTrigger.Actions>
@@ -30,13 +35,15 @@
         </EventTrigger>
     </Window.Triggers>
     
-    <Grid Background="#ffdadada">
-        <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="550" CornerRadius="15">
+    <Grid Background="Transparent">
+        <Viewbox>
+        <Border Margin="5" Background="White" VerticalAlignment="Stretch" Padding="30" CornerRadius="30" Name="TopBor" MouseLeftButtonDown="TopBor_OnMouseLeftButtonDown">
             <Border.Effect>
-                <DropShadowEffect BlurRadius="50" Color="Black" ShadowDepth="5"/>
+                <DropShadowEffect BlurRadius="20" Color="Black" ShadowDepth="0" Opacity="0.25" Direction="0"/>
             </Border.Effect>
             <StackPanel>
-                <TextBlock Text="Друтуте" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
+                    <Button HorizontalAlignment="Right" Content="X" Click="Close_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
+                    <TextBlock Text="Друтуте" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
                 <Grid Margin="0 0 0 20">
                     <Button HorizontalAlignment="Left" Content="Регистрация"/>
                     <Button HorizontalAlignment="Right" Content="Войти" Click="In_Change" Style="{StaticResource MaterialDesignFlatButton}"/>
@@ -48,5 +55,6 @@
                 <Button Content="Зарегестрироваться" x:Name="regButton" Margin="0 20" Click="Button_Reg_Click"/>
             </StackPanel>
         </Border>
+        </Viewbox>
     </Grid>
 </Window>
