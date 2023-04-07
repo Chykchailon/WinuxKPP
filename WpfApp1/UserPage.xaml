@@ -6,13 +6,21 @@
         xmlns:local="clr-namespace:WpfApp1"
          mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Форма" Height="350" Width="600">
-    <Grid Background="#ffdadada">
-        <Border MinWidth="400" Margin="15" Background="White" VerticalAlignment="Center" Padding="30" MaxWidth="450" CornerRadius="15">
+        AllowsTransparency="True" Background="Transparent" WindowStyle="None"
+        Title="Форма" Height="250" Width="600">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0" ResizeBorderThickness="20"/>
+    </WindowChrome.WindowChrome>
+    
+    <Grid>
+        <Viewbox>
+            <Border MinWidth="400" Margin="5" Background="White" VerticalAlignment="Stretch" Padding="30"  CornerRadius="30" Name="TopBor" MouseLeftButtonDown="TopBor_OnMouseLeftButtonDown">
             <Border.Effect>
-                <DropShadowEffect BlurRadius="50" Color="Black" ShadowDepth="5"/>
+                <DropShadowEffect BlurRadius="50" Color="Black" ShadowDepth="0" Opacity="0.25" Direction="0"/>
             </Border.Effect>
             <StackPanel>
+                <Button HorizontalAlignment="Right" Content="X" Click="Close_Click" Style="{StaticResource MaterialDesignFlatButton}"/>
                 <TextBlock Text="Личный кабинет" FontSize="30" FontWeight="Bold" Margin="0 0 0 20"/>
 
                 <ListView x:Name="listOfUsers" Margin="10">
@@ -28,6 +36,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
-        </Border>
+            </Border>
+        </Viewbox>
     </Grid>
 </Window>
